@@ -20,7 +20,7 @@ class CollectionWindow {
         },
         {
           name: 'materials',
-          labelText: 'Nyersanyag(scrap,mokuzom..)',
+          labelText: 'Nyersanyag(scrap,mukószom..)',
           appendTo: this.collectionWindow,
           event: function () {
             window.settings.settings.materials = this.checked;
