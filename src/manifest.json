@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Toshinou HUN ",
-  "version": "0.27",
-  "default_locale": "en",
+  "name": "Toshinou Pro ",
+  "version": "0.28",
+  "default_locale": "hu",
   "description": "__MSG_desextension__",
     "page_action": {
       "default_icon": {
