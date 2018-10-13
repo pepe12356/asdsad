@@ -1,3 +1,4 @@
+Discord: https://discordapp.com/invite/wHHCaY9
 Toshinou HUN A csalás / eszköz / bot / bármi egy böngésző DarkOrbit nevű flash játék. Nagyon csinos dolgokat csinál, és még mindig nehéz fejlesztés alatt áll. Az eszközt eredetileg freskó készítette, de sok ember módosította és frissítette, mivel a freskó elhagyta. Van egy magas kockázat a bank , és nem javaslom, hogy használja azt olyan fiókot, amit nem akar elveszteni.
 
 Hogyan kell telepíteni / használni? Chrome / Chromium / Opera Töltse le és vegye ki Nyisson meg minden webes proxy-t, és keresse meg az opciókat Engedélyezze a HTTPS visszafejtését (talán megbízhat a tanúsításban és indítsa újra a proxyt) Telepítse az addot a chrome: // kiterjesztéseken keresztül Használja a web proxy-t a main.swf és a preloader.swf helyére Élvez!
