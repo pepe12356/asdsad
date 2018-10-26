@@ -4,12 +4,12 @@ Created by Freshek on 28.10.2017
 
 class AutolockWindow {
   createWindow() {
-    this.autolockWindow = WindowFactory.createWindow({width: 300, text: "Autolocker"});
+    this.autolockWindow = WindowFactory.createWindow({width: 300, text: "Jelölő"});
 
     let options = [
       {
         name: 'lockNpc',
-        labelText: 'Jelölő NPC (gomb: x)',
+        labelText: 'Npc jelölés (gomb: x)',
         appendTo: this.autolockWindow,
         event: function () {
           window.settings.lockNpc = this.checked;
@@ -17,7 +17,7 @@ class AutolockWindow {
       },
       {
         name: 'lockPlayers',
-        labelText: 'Jelölő Player (gomb: z)',
+        labelText: 'Player jelölés (gomb: z)',
         appendTo: this.autolockWindow,
         event: function () {
           window.settings.lockPlayers = this.checked;

@@ -49,17 +49,12 @@ class Settings {
       flyingFormation: -2,
       useAbility: false,
       abilitySlot: -1,
-      autoCamo: false,
-      camouflageSlot: -1,
       reviveType: 0,
       reviveLimit: 5,
       enableRefresh: false,
       refreshTime: 60,
       refreshed: false,
-      workmap: 0,
-      enablePet: false,
-      petModule: 0,
-      petReviveLimit: 10
+      workmap: 0
     };
     chrome.storage.local.get(this.defaults, items => {
       console.log(items);

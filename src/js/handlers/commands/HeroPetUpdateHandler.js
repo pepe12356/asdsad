@@ -4,20 +4,21 @@
 */
 
 class HeroPetUpdateHandler {
-	static get ID() {
-		return 14129;
-	}
-
-	constructor() {
-		this._handler = function (e, a) {
-			var parsedJson = JSON.parse(e.detail);
-			if (window.pet == null) {
-				window.pet = new Pet(parsedJson[Variables.heroPetId]);
-			}
-		}
-	}
+    static get ID() {
+      return 14129;
+    }
   
-	get handler() {
-		return this._handler;
-	}
+    constructor() {
+      this._handler = function (e, a) {
+        var parsedJson = JSON.parse(e.detail);
+
+        if (window.pet == null) {
+            window.pet = new Pet(parsedJson[Variables.heroPetId]);
+        }
+      }
+    }
+  
+    get handler() {
+      return this._handler;
+    }
   }

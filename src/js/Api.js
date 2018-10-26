@@ -17,39 +17,16 @@ class Api {
 		this.rute = null;
 		this.starSystem = [];
 		this.workmap = null;
-		this.jumped = false;
 		this.changeConfigTime = $.now();
 		this.changeFormationTime = $.now();
 		this.lastAutoLock = $.now();
 		this.autoLocked = false;
 		this.runDelay = -1;
-		// pet stuff
-		this.currentModule = null;
-		this.petDead = false;
-		this.petActivateTimer = -1;
-		this.moduleCooldown = -1;
-		this.petHasFuel = true;
 		// QuickSlot stuff
 		this.abilityCoolDown = 1;
 		this.formation = -1;
 		this.pauseTime = null;
 		this.pauseStop = null;
-	}
-
-	changePetModule(module_id){
-		if(this.currentModule != module_id){
-			Injector.injectScript('document.getElementById("preloader").petModule(parseInt('+module_id+'), "");');
-			this.currentModule = module_id;
-		}
-	}
-
-	callPet(n){
-		// 0 = activate
-		// 1 = deactivate
-		// 4 = repair
-		api.petActivateTimer = $.now();
-		Injector.injectScript('document.getElementById("preloader").petCall('+parseInt(n)+');');
-		this.currentModule = -1;
 	}
 
 	pause(t){
@@ -78,7 +55,7 @@ class Api {
 	}
 
 	useAbility(){
-		var cooldownlist = {"cyborg":310000,"solace":140000,"diminisher":161000,"venom":180000,"sentinel":215000,"spectrum":195000,"v-lightning":185000};
+		var cooldownlist = {"cyborg":310000,"solace":140000,"diminisher":161000,"venom":180000 ,"sentinel":235000 ,"spectrum":210000};
 		if(this.abilityCoolDown && $.now() - this.abilityCoolDown > cooldownlist[window.hero.skillName]){
 			this.quickSlot(window.settings.settings.abilitySlot);
 			this.abilityCoolDown = $.now();
@@ -256,11 +233,12 @@ class Api {
 	jumpInGateByID(gateId){
 		let hasJumped = false;
 		let gate = this.findGatebyID(gateId);
-		if (!this.jumped && gate.gate && this.jumpTime && $.now() - this.jumpTime > 5500) {
+		if (gate.gate && this.jumpTime && $.now() - this.jumpTime > 5500) {
 			let x = gate.gate.position.x + MathUtils.random(-100, 100);
 			let y = gate.gate.position.y + MathUtils.random(-100, 100);
 			if (window.hero.position.distanceTo(gate.gate.position) < 200) {
 				this.jumpGate();
+				this.jumpTime = $.now();
 				hasJumped = true;
 			}
 			this.resetTarget("all");
@@ -507,19 +485,8 @@ class Api {
 		let gate = this.findNearestGateForRunAway(enemy);
 		if(gate.gate){
 			let dist = window.hero.distanceTo(gate.gate.position);
-            if (window.settings.settings.useAbility && dist > 350 &&
-                (window.hero.skillName == "spectrum" ||
-                    window.hero.skillName == "sentinel" ||
-                    window.hero.skillName == "v-lightning" )) {
-
-                let hpPercent = MathUtils.percentFrom(window.hero.hp, window.hero.maxHp);
-                let shdPercent = MathUtils.percentFrom(window.hero.shd, window.hero.maxShd);
-                // Excludes shield factor if there's no shield on the configuration
-                if (isNaN(shdPercent))
-                    shdPercent = 100;
-                if (Math.min(hpPercent, shdPercent) < window.settings.settings.repairWhenHpIsLowerThanPercent)
-                    api.useAbility();
-            }
+			if (window.settings.settings.useAbility && window.hero.skillName == "spectrum" && dist > 350) 
+				api.useAbility();
 			if(window.settings.settings.jumpFromEnemy && !window.stayInPortal){
 				if (this.jumpAndGoBack(gate.gate.gateId)) {
 					this.runDelay = $.now();
@@ -539,24 +506,6 @@ class Api {
 				window.fleeFromEnemy = false;
 			}
 		}
-	}
-
-	findNearestGatebyGateType(gateId) {
-		let minDist = 100000;
-		let finalGate;
-
-		this.gates.forEach(gate => {
-			let dist = window.hero.distanceTo(gate.position);
-			if (dist < minDist && gate.gateType == gateId) {
-				finalGate = gate;
-				minDist = dist;
-			}
-		});
-
-		return {
-		gate: finalGate,
-		distance: minDist
-		};
 	}
 
 	findNearestGatebyGateType(gateId) {

@@ -7,12 +7,12 @@ class CollectionWindow {
       this.collectionWindow = WindowFactory.createWindow({
         width: 320,
         maxHeight: 300,
-        text: "Collection"
+        text: "Dobozok"
       });
   
       let controls = [{
           name: 'bonusBox',
-          labelText: 'Collect boxes',
+          labelText: 'Bonusz doboz',
           appendTo: this.collectionWindow,
           event: function () {
             window.settings.settings.bonusBox = this.checked;
@@ -20,7 +20,7 @@ class CollectionWindow {
         },
         {
           name: 'materials',
-          labelText: 'Collect materials',
+          labelText: 'Nyersanyag(scrap,mukószom..)',
           appendTo: this.collectionWindow,
           event: function () {
             window.settings.settings.materials = this.checked;
@@ -36,7 +36,7 @@ class CollectionWindow {
         },
         {
             name: 'greenOrGoldBooty',
-            labelText: 'Collect green or gold booty',
+            labelText: 'Zöld és arany doboz',
             appendTo: this.collectionWindow,
             event: function () {
               window.settings.settings.greenOrGoldBooty = this.checked;
@@ -44,7 +44,7 @@ class CollectionWindow {
         },
         {
             name: 'blueBooty',
-            labelText: 'Collect blue booty',
+            labelText: 'Kék doboz',
             appendTo: this.collectionWindow,
             event: function () {
               window.settings.settings.blueBooty = this.checked;
@@ -52,7 +52,7 @@ class CollectionWindow {
         },
         {
             name: 'redBooty',
-            labelText: 'Collect red booty',
+            labelText: 'Piros doboz',
             appendTo: this.collectionWindow,
             event: function () {
               window.settings.settings.redBooty = this.checked;
@@ -60,11 +60,11 @@ class CollectionWindow {
         },
         {
             name: 'masqueBooty',
-            labelText: 'Collect masque booty',
+            labelText: 'Collect masque booty(hamarosan)',
             appendTo: this.collectionWindow,
             event: function () {
               window.settings.settings.masqueBooty = this.checked;
-            }
+            } 
         },
       ];
   

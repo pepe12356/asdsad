@@ -8,7 +8,6 @@ class MessagesHandler {
 		this._handler = (e, a) => {
 			// 'STM' "server_restart_n_seconds" [5] == seconds
 			// {"message":"0", "A", "STM", "server_restart_n_seconds", "30"}
-			// {"message":"0|A|STM|msg_pet_out_of_fuel"}
 			let _events = {
 				'CRE': 'credits',
 				'BAT': 'ammo',
@@ -30,14 +29,6 @@ class MessagesHandler {
 			}
 
 			if ("A" == message[1]) {
-				if(message[2] == "STM"){
-					if(message[3] == "msg_pet_out_of_fuel"){
-						// pet out of fuel
-						a.petHasFuel = false;
-						window.pet = null;
-						a.currentModule = -1;
-					}
-				}
 				this.connection({
 					connected: true,
 					status: 'on'
@@ -116,7 +107,10 @@ class MessagesHandler {
 		window.dispatchEvent(event);
 	}
 
-	connection({connected,status}) {
+	connection({
+		connected,
+		status
+	}) {
 		window.dispatchEvent(new CustomEvent("connection", {
 			detail: {
 			connected,
