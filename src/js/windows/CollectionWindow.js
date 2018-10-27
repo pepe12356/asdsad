@@ -12,7 +12,7 @@ class CollectionWindow {
   
       let controls = [{
           name: 'bonusBox',
-          labelText: 'Bonusz doboz',
+          labelText: 'Bónusz doboz',
           appendTo: this.collectionWindow,
           event: function () {
             window.settings.settings.bonusBox = this.checked;
@@ -20,7 +20,7 @@ class CollectionWindow {
         },
         {
           name: 'materials',
-          labelText: 'Nyersanyag(scrap,mukószom..)',
+          labelText: 'Nyersanyag(scrap,mukózum..)',
           appendTo: this.collectionWindow,
           event: function () {
             window.settings.settings.materials = this.checked;
@@ -28,7 +28,7 @@ class CollectionWindow {
         },
         {
           name: 'cargoBox',
-          labelText: 'Collect cargo',
+          labelText: 'Npc nyersanyag',
           appendTo: this.collectionWindow,
           event: function () {
             window.settings.settings.cargoBox = this.checked;
